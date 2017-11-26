@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\ECS">
+      <UniqueIdentifier>{9af4d4fe-7332-49e7-b691-5aab0c95aede}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,10 +42,16 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="component.hpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ECS</Filter>
     </ClInclude>
     <ClInclude Include="entity.hpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="transformcomponent.hpp">
+      <Filter>Source Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="componenttypes.hpp">
+      <Filter>Source Files\ECS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

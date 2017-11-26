@@ -125,10 +125,12 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="componenttypes.hpp" />
     <ClInclude Include="engine.hpp" />
     <ClInclude Include="component.hpp" />
     <ClInclude Include="entity.hpp" />
     <ClInclude Include="timer.hpp" />
+    <ClInclude Include="transformcomponent.hpp" />
     <ClInclude Include="window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

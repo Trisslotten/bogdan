@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <unordered_map>
 #include "component.hpp"
+#include "componenttypes.hpp"
 
 class Entities
 {
@@ -12,21 +13,32 @@ class Entities
 	static EntityID id_counter;
 
 	template <class ...Ts>
-	struct RemoveComponents;
+	struct AllComponents;
 	template <>
-	struct RemoveComponents<Types<>>
+	struct AllComponents<Types<>>
 	{
 		static void apply(EntityID e) {}
 	};
 	template <class... Ts>
-	struct RemoveComponents<Types<Ts...>>
+	struct AllComponents<Types<Ts...>>
 	{
-		static void apply(EntityID e)
+		static void remove(EntityID e)
 		{
 			removeComponents<Ts...>(e);
 		}
+		static void removeAllComponent()
+		{
+			removeEveryComponent<Ts...>();
+		}
 	};
 	
+	template <class First, class... Rest> 
+	static void removeEveryComponent()
+	{
+		First::removeAll();
+		if constexpr (sizeof...(Rest) > 0)
+			removeEveryComponent<Rest...>();
+	}
 
 	template <class First, class... Rest>
 	static void addComponents(typename std::unordered_map<EntityID, ComponentFlag>::iterator& it)
@@ -62,7 +74,7 @@ public:
 		if (it == entities.end())
 			return;
 
-		RemoveComponents<ComponentTypes>::apply(id);
+		AllComponents<ComponentTypes>::remove(id);
 		entities.erase(it);
 	}
 
@@ -107,6 +119,13 @@ public:
 			}
 		}
 		return result;
+	}
+
+	static void clear()
+	{
+		entities = {};
+		id_counter = 0;
+		AllComponents<ComponentTypes>::removeAllComponent();
 	}
 };
 std::unordered_map<EntityID, ComponentFlag> Entities::entities = {};
