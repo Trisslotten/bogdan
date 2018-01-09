@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <glm/glm.hpp>
 #include <string>
+#include "logger.hpp"
 
 namespace
 {
@@ -33,6 +34,13 @@ void Window::open(int width, int height)
 		exit(EXIT_FAILURE);
 
 	title = "bogdan";
+	
+
+	glfwWindowHint(GLFW_DEPTH_BITS, 16);
+	glfwWindowHint(GLFW_STENCIL_BITS, 0);
+	//glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	//glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+
 
 	window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
 	if (!window)
@@ -45,13 +53,18 @@ void Window::open(int width, int height)
 	GLenum err = glewInit();
 	if (err != GLEW_OK)
 	{
-		// Problem: glewInit failed, something is seriously wrong.
-		std::cout << "glewInit failed: " << glewGetErrorString(err) << "\n";
+		Log::errorln("glewInit failed: " + std::string((const char*)glewGetErrorString(err)));
 		system("pause");
 		exit(1);
 	}
+
+
 	scrolls[window] = glm::vec2(0, 0);
 	glfwSetScrollCallback(window, scrollCallback);
+
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
+	//glCullFace(GL_FRONT);
 }
 
 void Window::close()
@@ -76,6 +89,8 @@ void Window::update()
 
 	glfwSwapBuffers(window);
 	glfwPollEvents();
+	auto _size = size();
+	glViewport(0, 0, (GLsizei)_size.x, (GLsizei)_size.y);
 }
 
 bool Window::shouldClose()
@@ -102,4 +117,11 @@ glm::vec2 Window::mousePosition()
 	glm::dvec2 pos;
 	glfwGetCursorPos(window, &pos.x, &pos.y);
 	return pos;
+}
+
+glm::vec2 Window::size()
+{
+	int width = 0, height = 0;
+	glfwGetWindowSize(window, &width, &height);
+	return glm::vec2(width, height);
 }

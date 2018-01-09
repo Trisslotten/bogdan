@@ -16,6 +16,15 @@
     <Filter Include="Source Files\ECS">
       <UniqueIdentifier>{9af4d4fe-7332-49e7-b691-5aab0c95aede}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\graphics">
+      <UniqueIdentifier>{d421ce50-a9a1-426c-b0e8-de55bbe6c3c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\util">
+      <UniqueIdentifier>{445c8572-78cb-46da-8de5-1147f0fde5d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\shaders">
+      <UniqueIdentifier>{d85238c0-e04a-4321-ac74-0ddd54777d9d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,8 +36,32 @@
     <ClCompile Include="window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="framebuffer.cpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="shader.cpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="model.cpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer.cpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="logger.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="lodepng.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="material.cpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
     <ClCompile Include="timer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Source Files\graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -36,9 +69,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="window.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="timer.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="component.hpp">
@@ -53,5 +83,43 @@
     <ClInclude Include="componenttypes.hpp">
       <Filter>Source Files\ECS</Filter>
     </ClInclude>
+    <ClInclude Include="model.hpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="framebuffer.hpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.hpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="shader.hpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="vertex.hpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer.hpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="material.hpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="logger.hpp">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="lodepng.h">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.hpp">
+      <Filter>Source Files\util</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\shaders\shader.frag">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="assets\shaders\shader.vert">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
